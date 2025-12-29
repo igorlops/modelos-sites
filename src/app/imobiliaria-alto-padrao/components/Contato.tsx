@@ -1,37 +1,54 @@
 'use client';
 import { theme } from '../theme';
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
+import { Phone, Mail, Instagram, MapPin } from 'lucide-react';
+
 export default function Contato() {
     return (
-        <section id="contato" className="py-24 bg-stone-50">
-            <div className={theme.layout.container}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <div className="space-y-8">
-                        <h2 className="text-4xl font-bold text-stone-900">Fale com um consultor</h2>
-                        <p className="text-stone-600">Atendimento personalizado de segunda a sábado, das 9h às 19h.</p>
-                        <div className="space-y-6">
-                            {[{ icon: <Phone />, label: "WhatsApp", info: "(11) 99777-8899" }, { icon: <Mail />, label: "Email", info: "vendas@primeestates.com.br" }, { icon: <MapPin />, label: "Showroom", info: "Av. Faria Lima, 3000 - Itaim Bibi, SP" }].map((item, i) => (
-                                <div key={i} className="flex gap-4"><div className="text-emerald-700">{item.icon}</div><div><p className="font-bold text-stone-900">{item.label}</p><p className="text-stone-600">{item.info}</p></div></div>
-                            ))}
-                        </div>
-                        <a href="#" className="inline-flex items-center gap-2 text-emerald-700 font-bold"><Instagram className="w-5 h-5" />@primeestates</a>
-                    </div>
-                    <form className="bg-white p-8 rounded-2xl shadow-lg">
-                        <h3 className="text-2xl font-bold text-stone-900 mb-6">Estou procurando...</h3>
-                        <div className="space-y-4">
-                            <input type="text" placeholder="Nome" className="w-full border border-stone-200 rounded-lg px-4 py-3" />
-                            <div className="grid grid-cols-2 gap-4">
-                                <input type="tel" placeholder="Telefone" className="w-full border border-stone-200 rounded-lg px-4 py-3" />
-                                <input type="email" placeholder="Email" className="w-full border border-stone-200 rounded-lg px-4 py-3" />
+        <section id="contato" className="py-0">
+            <div className="grid lg:grid-cols-2">
+                <div className="bg-slate-900 p-20 text-white flex flex-col justify-center">
+                    <h2 className="text-5xl font-bold mb-8">Vamos encontrar seu imóvel dos sonhos?</h2>
+                    <p className="text-2xl text-slate-300 mb-12">Atendimento VIP personalizado.</p>
+                    <div className="space-y-6">
+                        {[
+                            { icon: <Phone className="w-6 h-6" />, label: "WhatsApp VIP", info: "(11) 99999-0000" },
+                            { icon: <Mail className="w-6 h-6" />, label: "Email", info: "vip@altoimoveis.com.br" },
+                            { icon: <Instagram className="w-6 h-6" />, label: "Instagram", info: "@altoimoveis.sp" },
+                            { icon: <MapPin className="w-6 h-6" />, label: "Showroom", info: "Jardins - São Paulo" }
+                        ].map((c, i) => (
+                            <div key={i} className="flex items-center gap-4">
+                                <div className="bg-amber-600 p-3 rounded-lg">{c.icon}</div>
+                                <div>
+                                    <p className="text-slate-400 text-sm font-semibold">{c.label}</p>
+                                    <p className="font-bold text-lg">{c.info}</p>
+                                </div>
                             </div>
-                            <select className="w-full border border-stone-200 rounded-lg px-4 py-3 text-stone-600">
-                                <option>Quero comprar</option>
-                                <option>Quero vender</option>
-                                <option>Quero alugar</option>
-                            </select>
-                            <textarea rows={3} placeholder="Detalhes (bairro, metragem, valor...)" className="w-full border border-stone-200 rounded-lg px-4 py-3"></textarea>
-                            <button className="w-full bg-emerald-700 text-white font-bold py-4 rounded-lg hover:bg-emerald-800">Enviar</button>
+                        ))}
+                    </div>
+                </div>
+                <div className="bg-white p-20">
+                    <h3 className="text-3xl font-bold mb-10">Fale com Corretor</h3>
+                    <form className="space-y-6">
+                        <input type="text" placeholder="Nome" className="w-full border-b-2 border-slate-200 pb-4 focus:border-amber-600 focus:outline-none text-lg" />
+                        <div className="grid grid-cols-2 gap-6">
+                            <input type="tel" placeholder="Telefone" className="w-full border-b-2 border-slate-200 pb-4 focus:border-amber-600 focus:outline-none text-lg" />
+                            <input type="email" placeholder="Email" className="w-full border-b-2 border-slate-200 pb-4 focus:border-amber-600 focus:outline-none text-lg" />
                         </div>
+                        <select className="w-full border-b-2 border-slate-200 pb-4 focus:border-amber-600 focus:outline-none text-lg text-slate-600">
+                            <option>Interesse</option>
+                            <option>Comprar</option>
+                            <option>Vender</option>
+                            <option>Alugar</option>
+                        </select>
+                        <select className="w-full border-b-2 border-slate-200 pb-4 focus:border-amber-600 focus:outline-none text-lg text-slate-600">
+                            <option>Faixa de preço</option>
+                            <option>R$ 2-5 Mi</option>
+                            <option>R$ 5-10 Mi</option>
+                            <option>R$ 10+ Mi</option>
+                        </select>
+                        <button className="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold py-5 rounded-xl hover:from-amber-700 hover:to-orange-700 shadow-lg text-lg mt-8">
+                            Solicitar Contato
+                        </button>
                     </form>
                 </div>
             </div>

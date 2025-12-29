@@ -1,1 +1,57 @@
-'use client'; import { theme } from '../theme'; import { Mail, MessageCircle, BookOpen } from 'lucide-react'; export default function Contato() { return (<section className="py-24 bg-slate-50"><div className={theme.layout.container}><div className="grid lg:grid-cols-2 gap-16"><div className="space-y-8"><h2 className="text-4xl font-bold">Fale com Vendas</h2><p className="text-slate-600 text-lg">Especialistas disponíveis para responder suas dúvidas técnicas e comerciais.</p><div className="space-y-6">{[{ icon: <MessageCircle />, label: "WhatsApp", info: "(11) 97777-8899" }, { icon: <Mail />, label: "Email", info: "vendas@saleshub.com" }, { icon: <BookOpen />, label: "Documentação", info: "docs.saleshub.com" }].map((c, i) => (<div key={i} className="flex gap-4"><div className="text-blue-600">{c.icon}</div><div><p className="font-bold">{c.label}</p><p className="text-slate-600">{c.info}</p></div></div>))}</div></div><form className="bg-white p-10 rounded-2xl shadow-lg"><h3 className="text-2xl font-bold mb-6">Solicitar Demonstração</h3><div className="space-y-4"><input type="text" placeholder="Nome" className="w-full border rounded-lg px-4 py-3" /><div className="grid grid-cols-2 gap-4"><input type="email" placeholder="Email" className="border rounded-lg px-4 py-3" /><input type="tel" placeholder="Telefone" className="border rounded-lg px-4 py-3" /></div><input type="text" placeholder="Empresa" className="w-full border rounded-lg px-4 py-3" /><select className="w-full border rounded-lg px-4 py-3 text-slate-600"><option>Quantos vendedores?</option><option>1-5</option><option>6-20</option><option>21-50</option><option>50+</option></select><button className="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700">Agendar Demo</button></div></form></div></div></section>); }
+'use client';
+import { theme } from '../theme';
+import { Calendar, Mail, Phone, MessageSquare } from 'lucide-react';
+
+export default function Contato() {
+    return (
+        <section id="contato" className="py-24 bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 text-white">
+            <div className={theme.layout.container}>
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-20">
+                        <h2 className="text-6xl font-black mb-6">Vamos conversar?</h2>
+                        <p className="text-3xl text-violet-100">Nossa equipe está pronta para te ajudar.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                        {[
+                            { icon: <Calendar className="w-12 h-12" />, label: "Agendar Demo", bg: "bg-white/20" },
+                            { icon: <MessageSquare className="w-12 h-12" />, label: "Chat Online", bg: "bg-white/20" },
+                            { icon: <Phone className="w-12 h-12" />, label: "Ligar Agora", bg: "bg-white/20" },
+                            { icon: <Mail className="w-12 h-12" />, label: "Email", bg: "bg-white/20" }
+                        ].map((c, i) => (
+                            <button key={i} className={`${c.bg} backdrop-blur-md p-10 rounded-3xl hover:bg-white/30 transition-all border-2 border-white/30 hover:scale-105`}>
+                                <div className="mb-6 flex justify-center">{c.icon}</div>
+                                <p className="font-bold text-xl">{c.label}</p>
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="bg-white text-slate-900 p-12 rounded-3xl shadow-2xl">
+                        <h3 className="text-3xl font-bold text-center mb-10">Solicitar Proposta Comercial</h3>
+                        <form className="space-y-6">
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <input type="text" placeholder="Nome completo" className="bg-slate-50 border-2 border-slate-200 rounded-xl px-6 py-4 focus:border-violet-500 focus:outline-none" />
+                                <input type="email" placeholder="Email corporativo" className="bg-slate-50 border-2 border-slate-200 rounded-xl px-6 py-4 focus:border-violet-500 focus:outline-none" />
+                            </div>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <input type="tel" placeholder="Telefone/WhatsApp" className="bg-slate-50 border-2 border-slate-200 rounded-xl px-6 py-4 focus:border-violet-500 focus:outline-none" />
+                                <input type="text" placeholder="Empresa" className="bg-slate-50 border-2 border-slate-200 rounded-xl px-6 py-4 focus:border-violet-500 focus:outline-none" />
+                            </div>
+                            <select className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-6 py-4 focus:border-violet-500 focus:outline-none text-slate-600">
+                                <option>Tamanho do time de vendas</option>
+                                <option>1-5 pessoas</option>
+                                <option>6-20 pessoas</option>
+                                <option>21-50 pessoas</option>
+                                <option>50+ pessoas</option>
+                            </select>
+                            <textarea rows={3} placeholder="Conte mais sobre sua operação comercial..." className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-6 py-4 focus:border-violet-500 focus:outline-none resize-none"></textarea>
+                            <button className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold py-6 rounded-xl hover:from-violet-700 hover:to-fuchsia-700 shadow-xl text-xl">
+                                Enviar Solicitação
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}

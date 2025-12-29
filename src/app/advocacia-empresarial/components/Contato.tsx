@@ -1,71 +1,58 @@
 'use client';
-
 import { theme } from '../theme';
-import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Briefcase } from 'lucide-react';
 
 export default function Contato() {
     return (
-        <section id="contato" className="py-24 bg-neutral-50">
+        <section id="contato" className="py-24 bg-white">
             <div className={theme.layout.container}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h2 className="text-5xl font-bold mb-8">Agende uma consultoria</h2>
+                            <p className="text-xl text-slate-600 mb-12">Reunião inicial de 30min para entender sua demanda e apresentar proposta.</p>
 
-                    <div className="space-y-8">
-                        <h2 className="font-serif text-4xl text-neutral-900">Fale Conosco</h2>
-                        <p className="text-neutral-600">
-                            Entre em contato para agendar uma reunião estratégica. Retornamos em até 4 horas úteis.
-                        </p>
-
-                        <div className="space-y-6 pt-4">
-                            {[
-                                { icon: <Phone />, label: "Telefone", info: "(11) 3555-8900" },
-                                { icon: <Mail />, label: "Email", info: "contato@limaadvocacia.com.br" },
-                                { icon: <MapPin />, label: "Escritório", info: "Av. Paulista, 1100 - 15º andar\nBela Vista, São Paulo - SP" },
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-4">
-                                    <div className="text-amber-600 w-6 h-6">{item.icon}</div>
-                                    <div>
-                                        <p className="font-bold text-neutral-900">{item.label}</p>
-                                        <p className="text-neutral-600 whitespace-pre-line">{item.info}</p>
+                            <div className="space-y-6">
+                                {[
+                                    { icon: <Phone className="w-7 h-7 text-slate-700" />, label: "Telefone", info: "(11) 3000-4000" },
+                                    { icon: <Mail className="w-7 h-7 text-slate-700" />, label: "Email", info: "contato@advemp.com.br" },
+                                    { icon: <MapPin className="w-7 h-7 text-slate-700" />, label: "Escritório", info: "Av. Faria Lima, 1500 - São Paulo" },
+                                    { icon: <Briefcase className="w-7 h-7 text-slate-700" />, label: "OAB", info: "SP 123.456" }
+                                ].map((c, i) => (
+                                    <div key={i} className="flex items-center gap-5 p-5 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+                                        <div className="bg-slate-200 p-3 rounded-lg">{c.icon}</div>
+                                        <div>
+                                            <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider">{c.label}</p>
+                                            <p className="text-lg font-bold text-slate-900">{c.info}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
 
-                        <div className="pt-8">
-                            <a href="#" className="inline-flex items-center gap-2 text-amber-700 hover:text-amber-800 transition-colors font-semibold">
-                                <Linkedin className="w-5 h-5" />
-                                Lima & Associados no LinkedIn
-                            </a>
-                        </div>
+                        <form className="bg-slate-50 p-10 rounded-3xl border-2 border-slate-200">
+                            <h3 className="text-2xl font-bold mb-8">Solicitar Proposta</h3>
+                            <div className="space-y-6">
+                                <input type="text" placeholder="Nome do executivo" className="w-full bg-white border border-slate-300 rounded-lg px-5 py-4 focus:border-slate-600 focus:outline-none" />
+                                <input type="text" placeholder="Empresa" className="w-full bg-white border border-slate-300 rounded-lg px-5 py-4 focus:border-slate-600 focus:outline-none" />
+                                <div className="grid grid-cols-2 gap-4">
+                                    <input type="email" placeholder="Email" className="w-full bg-white border border-slate-300 rounded-lg px-5 py-4 focus:border-slate-600 focus:outline-none" />
+                                    <input type="tel" placeholder="Telefone" className="w-full bg-white border border-slate-300 rounded-lg px-5 py-4 focus:border-slate-600 focus:outline-none" />
+                                </div>
+                                <select className="w-full bg-white border border-slate-300 rounded-lg px-5 py-4 focus:border-slate-600 focus:outline-none text-slate-600">
+                                    <option>Área de interesse</option>
+                                    <option>Consultoria Empresarial</option>
+                                    <option>Contratos</option>
+                                    <option>Trabalhista</option>
+                                    <option>Tributário</option>
+                                </select>
+                                <textarea rows={3} placeholder="Descreva brevemente a demanda..." className="w-full bg-white border border-slate-300 rounded-lg px-5 py-4 focus:border-slate-600 focus:outline-none resize-none"></textarea>
+                                <button className="w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800">
+                                    Enviar Solicitação
+                                </button>
+                            </div>
+                        </form>
                     </div>
-
-                    <form className="bg-white p-8 rounded-2xl shadow-lg border border-neutral-100">
-                        <h3 className="font-serif text-2xl text-neutral-900 mb-6">Solicite Contato</h3>
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-semibold text-neutral-700 mb-2">Nome / Razão Social</label>
-                                <input type="text" className="w-full border border-neutral-200 rounded-lg px-4 py-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-sm font-semibold text-neutral-700 mb-2">Telefone</label>
-                                    <input type="tel" className="w-full border border-neutral-200 rounded-lg px-4 py-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-semibold text-neutral-700 mb-2">Email</label>
-                                    <input type="email" className="w-full border border-neutral-200 rounded-lg px-4 py-3 focus:border-amber-500 focus:outline-none transition-colors" />
-                                </div>
-                            </div>
-                            <div>
-                                <label className="block text-sm font-semibold text-neutral-700 mb-2">Assunto</label>
-                                <textarea rows={4} className="w-full border border-neutral-200 rounded-lg px-4 py-3 focus:border-amber-500 focus:outline-none transition-colors"></textarea>
-                            </div>
-                            <button className="w-full bg-amber-600 text-white font-bold py-4 rounded-lg hover:bg-amber-700 transition-colors shadow-lg">
-                                Enviar Mensagem
-                            </button>
-                        </div>
-                    </form>
-
                 </div>
             </div>
         </section>

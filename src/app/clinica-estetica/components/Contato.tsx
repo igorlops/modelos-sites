@@ -1,64 +1,56 @@
 'use client';
-
 import { theme } from '../theme';
-import { Instagram, Smartphone, MapPin, Mail } from 'lucide-react';
+import { Phone, Mail, Instagram, MapPin } from 'lucide-react';
 
 export default function Contato() {
     return (
-        <section className="py-24 bg-stone-50 border-t border-stone-200">
+        <section id="contato" className="py-24 bg-white">
             <div className={theme.layout.container}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-16">
+                        <h2 className="text-5xl font-bold mb-4">Agende sua Avaliação</h2>
+                        <p className="text-xl text-slate-600">Transformação começa com o primeiro passo. Vamos conversar?</p>
+                    </div>
 
-                    <div className="bg-white p-12 shadow-sm">
-                        <h3 className="font-serif text-3xl mb-8">Fale Conosco</h3>
-                        <form className="space-y-6">
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase tracking-wider text-stone-500">Nome</label>
-                                <input type="text" className="w-full border-b border-stone-300 py-2 focus:border-stone-900 focus:outline-none transition-colors" />
+                    <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-12 mb-12">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {[
+                                { icon: <Phone className="w-8 h-8" />, label: "WhatsApp", info: "(11) 96666-7777", color: "from-amber-600 to-orange-600" },
+                                { icon: <Mail className="w-8 h-8" />, label: "Email", info: "contato@beleza.clinic", color: "from-orange-600 to-red-600" },
+                                { icon: <Instagram className="w-8 h-8" />, label: "Instagram", info: "@belezaclinic", color: "from-pink-600 to-rose-600" },
+                                { icon: <MapPin className="w-8 h-8" />, label: "Endereço", info: "Jardins, SP", color: "from-purple-600 to-pink-600" }
+                            ].map((c, i) => (
+                                <div key={i} className="text-center group">
+                                    <div className={`bg-gradient-to-br ${c.color} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white group-hover:scale-110 transition-transform shadow-lg`}>
+                                        {c.icon}
+                                    </div>
+                                    <p className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-1">{c.label}</p>
+                                    <p className="font-bold text-slate-900">{c.info}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <form className="bg-white rounded-3xl shadow-xl p-10 border border-slate-100">
+                        <h3 className="text-2xl font-bold text-center mb-8">Solicitar Avaliação Gratuita</h3>
+                        <div className="space-y-6">
+                            <input type="text" placeholder="Nome" className="w-full border-b-2 border-slate-200 pb-3 focus:border-amber-600 focus:outline-none text-lg transition-colors" />
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <input type="tel" placeholder="WhatsApp" className="w-full border-b-2 border-slate-200 pb-3 focus:border-amber-600 focus:outline-none text-lg transition-colors" />
+                                <input type="email" placeholder="Email" className="w-full border-b-2 border-slate-200 pb-3 focus:border-amber-600 focus:outline-none text-lg transition-colors" />
                             </div>
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase tracking-wider text-stone-500">Telefone</label>
-                                <input type="tel" className="w-full border-b border-stone-300 py-2 focus:border-stone-900 focus:outline-none transition-colors" />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase tracking-wider text-stone-500">Mensagem</label>
-                                <textarea rows={3} className="w-full border-b border-stone-300 py-2 focus:border-stone-900 focus:outline-none transition-colors resize-none"></textarea>
-                            </div>
-                            <button className="bg-rose-950 text-white w-full py-4 uppercase tracking-widest text-xs font-bold hover:bg-stone-900 transition-colors">
+                            <select className="w-full border-b-2 border-slate-200 pb-3 focus:border-amber-600 focus:outline-none text-lg text-slate-600 transition-colors">
+                                <option>Procedimento de interesse</option>
+                                <option>Harmonização Facial</option>
+                                <option>Skinbooster</option>
+                                <option>Laser</option>
+                                <option>Peeling</option>
+                            </select>
+                            <button className="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold py-5 rounded-xl hover:from-amber-700 hover:to-orange-700 shadow-lg text-lg">
                                 Enviar Solicitação
                             </button>
-                        </form>
-                    </div>
-
-                    <div className="flex flex-col justify-between py-4">
-                        <div>
-                            <h3 className="font-serif text-3xl mb-8">Aura Clinic</h3>
-                            <div className="space-y-6 font-light text-stone-600">
-                                <div className="flex gap-4">
-                                    <MapPin className="text-rose-900 w-5 h-5" />
-                                    <p>Rua Oscar Freire, 2000<br />Jardins, São Paulo - SP</p>
-                                </div>
-                                <div className="flex gap-4">
-                                    <Smartphone className="text-rose-900 w-5 h-5" />
-                                    <p>(11) 99888-7777</p>
-                                </div>
-                                <div className="flex gap-4">
-                                    <Mail className="text-rose-900 w-5 h-5" />
-                                    <p>contato@auraclinic.com.br</p>
-                                </div>
-                            </div>
                         </div>
-
-                        <div className="mt-12">
-                            <p className="text-xs uppercase tracking-wider text-stone-400 mb-4">Siga-nos</p>
-                            <div className="flex gap-4">
-                                <a href="#" className="w-10 h-10 border border-stone-300 flex items-center justify-center text-stone-600 hover:bg-rose-950 hover:text-white hover:border-rose-950 transition-all">
-                                    <Instagram className="w-4 h-4" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
+                    </form>
                 </div>
             </div>
         </section>

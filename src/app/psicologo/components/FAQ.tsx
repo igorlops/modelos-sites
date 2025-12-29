@@ -1,41 +1,26 @@
 'use client';
-
 import { theme } from '../theme';
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+
+const faqs = [
+    { emoji: "🕐", q: "Quanto tempo dura cada sessão?", a: "50 minutos de terapia individual. Primeira consulta pode estender para 70min (anamnese completa)." },
+    { emoji: "💰", q: "Qual o valor da sessão?", a: "R$ 200 sessão individual. Pacotes mensais com desconto disponíveis. Aceito PIX/cartão." },
+    { emoji: "📱", q: "Atende online?", a: "Sim! Videochamada pelo Google Meet com mesma qualidade do presencial. Funciona muito bem." },
+    { emoji: "🎯", q: "Quantas sessões vou precisar?", a: "Varia muito. Algumas pessoas sentem melhora em 8-10 sessões, outras precisam de acompanhamento mais longo." },
+    { emoji: "🤐", q: "Fala sobre sigilo profissional?", a: "Absoluto. Tudo que conversamos fica entre nós. Código de ética é levado a sério aqui." },
+    { emoji: "⏰", q: "Posso remarcar sessão?", a: "Sim, com 24h de antecedência. Avisos de última hora são cobrados (salvo emergências)." }
+];
 
 export default function FAQ() {
-    const [open, setOpen] = useState<number | null>(0);
-
-    const faqs = [
-        { q: "Com que frequência devo fazer terapia?", a: "O ideal é semanalmente, para manter continuidade e aprofundamento do trabalho. Mas podemos adaptar à sua realidade financeira." },
-        { q: "Quanto tempo dura o tratamento?", a: "Varia muito. Questões pontuais podem ser resolvidas em 3-6 meses. Processos mais profundos levam 1-2 anos. Sempre com avaliações trimestrais." },
-        { q: "A terapia online funciona?", a: "Sim, estudos mostram eficácia similar à presencial. A única diferença é que você não está fisicamente no consultório, mas o vínculo terapêutico é o mesmo." },
-        { q: "Posso desmarcar sessão?", a: "Sim, com antecedência mínima de 24h. Desmarcações de última hora são cobradas 50% do valor." },
-        { q: "Você prescreve remédios?", a: "Não, psicólogos não prescrevem medicações. Se necessário, faço encaminhamento para psiquiatra parceiro." }
-    ];
-
     return (
-        <section className="py-24 bg-[#FDFBF7]">
+        <section className="py-24 bg-white">
             <div className={theme.layout.container}>
-                <div className="text-center mb-16">
-                    <h2 className="font-serif text-4xl text-stone-800 mb-4">Dúvidas Comuns</h2>
-                    <p className="text-stone-500 font-light">Transparência é parte do processo terapêutico.</p>
-                </div>
-
-                <div className="max-w-3xl mx-auto space-y-4">
+                <h2 className="text-4xl font-bold text-center mb-16 text-slate-900">Dúvidas Frequentes</h2>
+                <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
                     {faqs.map((f, i) => (
-                        <div key={i} className="bg-white rounded-xl border border-stone-100 overflow-hidden">
-                            <button
-                                onClick={() => setOpen(open === i ? null : i)}
-                                className="w-full flex items-center justify-between p-6 text-left hover:bg-stone-50 transition-colors"
-                            >
-                                <span className={`font-semibold ${open === i ? 'text-teal-700' : 'text-stone-700'}`}>{f.q}</span>
-                                <ChevronDown className={`text-stone-400 transition-transform ${open === i ? 'rotate-180' : ''}`} />
-                            </button>
-                            <div className={`transition-all duration-300 px-6 ${open === i ? 'max-h-32 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                <p className="text-stone-600 font-light leading-relaxed">{f.a}</p>
-                            </div>
+                        <div key={i} className="bg-gradient-to-br from-sage-50 to-green-50 p-8 rounded-3xl hover:shadow-xl transition-all border-2 border-sage-100 hover:border-sage-300">
+                            <div className="text-5xl mb-4">{f.emoji}</div>
+                            <h3 className="text-lg font-bold text-slate-900 mb-3">{f.q}</h3>
+                            <p className="text-slate-600 leading-relaxed">{f.a}</p>
                         </div>
                     ))}
                 </div>

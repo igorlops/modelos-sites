@@ -1,27 +1,32 @@
 'use client';
 import { theme } from '../theme';
 import { useState } from 'react';
-import { Plus } from 'lucide-react';
+
 export default function FAQ() {
-    const [open, setOpen] = useState<number | null>(0);
+    const [active, setActive] = useState(0);
     const faqs = [
-        { q: "Cobram taxa do comprador?", a: "Não. Nossa comissão é paga exclusivamente pelo vendedor (3% sobre o valor da transação)." },
-        { q: "Posso visitar o imóvel fora do horário comercial?", a: "Sim. Agendamos visitas conforme sua disponibilidade, inclusive finais de semana e após às 18h." },
-        { q: "Fazem permuta?", a: "Sim. Avaliamos seu imóvel atual e estruturamos a permuta com ou sem torna, dependendo dos valores." },
-        { q: "Trabalham com financiamento?", a: "Temos parceria com os principais bancos. Ajudamos em todo o processo, desde simulação até aprovação do crédito." }
+        { q: "Trabalham com imóveis abaixo de R$ 2Mi?", a: "Sim, mas nosso foco é alto padrão (R$ 2Mi+). Abaixo disso, indicamos corretores parceiros." },
+        { q: "Cobram exclusividade?", a: "Sim, contrato de 90 dias. Isso garante dedicação total e estratégia assertiva de venda." },
+        { q: "Qual a comissão?", a: "5-6% sobre valor de venda. Negociável conforme ticket. Incluímos fotografia profissional e tour virtual 3D." },
+        { q: "Fazem avaliação do imóvel?", a: "Sim, gratuita. Análise comparativa de mercado com laudo técnico detalhado." },
+        { q: "Quanto tempo para vender?", a: "Média de 90-120 dias para imóveis de alto padrão bem precificados. Temos buyers qualificados em carteira." }
     ];
+
     return (
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-slate-900 text-white">
             <div className={theme.layout.container}>
-                <h2 className="text-4xl font-bold text-center text-stone-900 mb-16">Dúvidas Comuns</h2>
-                <div className="max-w-3xl mx-auto space-y-4">
+                <h2 className="text-4xl font-bold text-center mb-16">Perguntas Frequentes</h2>
+                <div className="max-w-3xl mx-auto">
                     {faqs.map((f, i) => (
-                        <div key={i} className="border border-stone-200 rounded-xl overflow-hidden">
-                            <button onClick={() => setOpen(open === i ? null : i)} className="w-full flex justify-between p-6 text-left hover:bg-stone-50">
-                                <span className={`font-bold ${open === i ? 'text-emerald-700' : 'text-stone-900'}`}>{f.q}</span>
-                                <Plus className={`text-stone-400 transition-transform ${open === i ? 'rotate-45' : ''}`} />
-                            </button>
-                            <div className={`px-6 transition-all ${open === i ? 'max-h-24 pb-6' : 'max-h-0 opacity-0'}`}><p className="text-stone-600">{f.a}</p></div>
+                        <div
+                            key={i}
+                            onClick={() => setActive(active === i ? -1 : i)}
+                            className={`mb-4 cursor-pointer transition-all ${active === i ? 'bg-gradient-to-r from-amber-600 to-orange-600' : 'bg-slate-800'} rounded-2xl overflow-hidden`}
+                        >
+                            <div className="p-6">
+                                <h3 className="font-bold text-xl mb-2">{f.q}</h3>
+                                {active === i && <p className="text-amber-100 leading-relaxed mt-4">{f.a}</p>}
+                            </div>
                         </div>
                     ))}
                 </div>
