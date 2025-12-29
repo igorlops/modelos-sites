@@ -1,0 +1,20 @@
+export const theme = {
+    colors: {
+        primary: "bg-blue-700",
+        primaryHover: "hover:bg-blue-800",
+        secondary: "bg-slate-800",
+        accent: "text-blue-700",
+        accentBg: "bg-blue-50",
+        background: "bg-slate-50",
+        text: "text-slate-700",
+        heading: "text-slate-900",
+        muted: "text-slate-500",
+        cardBg: "bg-white",
+        border: "border-slate-200"
+    },
+    layout: {
+        container: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+        section: "py-24",
+        sectionAlt: "py-24 bg-white",
+    }
+}
