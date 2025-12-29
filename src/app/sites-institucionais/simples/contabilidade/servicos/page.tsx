@@ -171,8 +171,8 @@ export default function ServicosPage() {
             beneficios: [
                 "Economia em impostos interestaduais",
                 "Processos automatizados",
-                "Zero erro em apuração',
-        "Escalabilidade garantida"
+                "Zero erro em apuração",
+                "Escalabilidade garantida"
             ],
             icon: "🛒"
         }
